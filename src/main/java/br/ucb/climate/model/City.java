@@ -1,4 +1,4 @@
-package br.ucb.climate;
+package br.ucb.climate.model;
 
 public class City {
     private String name;
