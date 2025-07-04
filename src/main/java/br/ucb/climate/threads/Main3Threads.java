@@ -4,6 +4,7 @@ import br.ucb.climate.Util;
 import br.ucb.climate.controller.WeatherFetcher;
 import br.ucb.climate.model.City;
 import br.ucb.climate.model.WeatherData;
+import br.ucb.climate.view.ConsolePrinter;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -59,7 +60,7 @@ public class Main3Threads {
         public void run() {
             for (City cidade : cidades) {
                 WeatherData dados = WeatherFetcher.fetch(cidade);
-                if (dados != null) dados.imprimirResumo();
+                ConsolePrinter.imprimir(dados);
             }
         }
     }
