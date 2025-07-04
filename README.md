@@ -20,6 +20,9 @@ O experimento é executado em **quatro versões**:
 3. Com 9 threads (cada uma com 3 capitais);
 4. Com 27 threads (uma para cada capital).
 
+## 🧠 Motivação
+O uso de múltiplas threads pode acelerar programas que realizam operações bloqueantes, como chamadas HTTP. Porém, excesso de threads pode causar overhead ou até ser limitado pela API consumida. Este projeto visa analisar empiricamente esse trade-off, ajudando a compreender melhor os conceitos de concorrência e paralelismo na prática.
+
 ## 🗂️ Estrutura do Projeto
 
 ```bash
@@ -102,16 +105,16 @@ mvn exec:java -Dexec.mainClass="br.ucb.climate.threads.Main27Threads" > saida.tx
 ```
 
 ## 📊 Resultados
+Cada versão executa o experimento por 10 rodadas e imprime o tempo médio de execução ao final.
 
-Cada versão executa o experimento por 10 rodadas, e o tempo médio de execução é impresso ao final.
-Além disso, para cada cidade, os seguintes dados são apresentados:
+Para cada cidade, são apresentados
 
-- Data
-- Temperatura mínima
-- Temperatura máxima
-- Temperatura média
+| Cidade         | Data       | Temperatura Mínima (°C) | Temperatura Máxima (°C) | Temperatura Média (°C) |
+|----------------|------------|-------------------------|-------------------------|-----------------------|
+| São Paulo      | 2024-01-01 | 20.10                   | 30.50                   | 25.30                 |
+| Rio de Janeiro | 2024-01-01 | 22.30                   | 31.20                   | 26.80                 |
 
-Os resultados comparativos entre as 4 versões estão disponíveis no relatório abaixo.
+Os resultados completos e a análise comparativa entre as 4 versões estão disponíveis no relatório.
 
 ## 📄 Relatório
 O arquivo [relatorio.pdf]() contém:
