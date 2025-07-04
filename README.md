@@ -63,7 +63,7 @@ O projeto foi desenvolvido com Java 17 e Maven.
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/cariny/climate-thread-performance.git
+    git clone https://github.com/carinysaldanha/climate-thread-performance.git
     cd climate-thread-performance
     ```
 
