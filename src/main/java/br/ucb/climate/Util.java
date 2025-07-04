@@ -21,7 +21,7 @@ public class Util {
 
             for (int i = 0; i < array.length(); i++) {
                 JSONObject obj = array.getJSONObject(i);
-                String nome = obj.getString("nome");
+                String nome = obj.getString("name");
                 double lat = obj.getDouble("latitude");
                 double lon = obj.getDouble("longitude");
                 cidades.add(new City(nome, lat, lon));
