@@ -4,47 +4,49 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WeatherData {
-    // Para cada dia (String yyyy-MM-dd), armazenamos um array de temperaturas daquele dia
-    private Map<String, double[]> dailyTemperatures = new HashMap<>();
+    private String cidade;
+    private Map<String, DiaClima> dias;
 
-    // Você pode adaptar para armazenar média, mínima e máxima após cálculo
-    private Map<String, TemperatureStats> dailyStats = new HashMap<>();
-
-    public void addTemperatures(String date, double[] temps) {
-        dailyTemperatures.put(date, temps);
+    public WeatherData(String cidade) {
+        this.cidade = cidade;
+        this.dias = new HashMap<>();
     }
 
-    public void calculateStats() {
-        for (String date : dailyTemperatures.keySet()) {
-            double[] temps = dailyTemperatures.get(date);
-            double min = Double.MAX_VALUE;
-            double max = Double.MIN_VALUE;
-            double sum = 0.0;
+    public void adicionarTemperatura(String data, double temperatura) {
+        dias.computeIfAbsent(data, d -> new DiaClima()).adicionar(temperatura);
+    }
 
-            for (double t : temps) {
-                if (t < min) min = t;
-                if (t > max) max = t;
-                sum += t;
-            }
+    public void imprimirResumo() {
+        System.out.println("Cidade: " + cidade);
+        dias.forEach((data, clima) -> {
+            System.out.printf("Data: %s | Média: %.2f | Mín: %.2f | Máx: %.2f\n",
+                    data, clima.getMedia(), clima.getMin(), clima.getMax());
+        });
+    }
 
-            double avg = sum / temps.length;
-            dailyStats.put(date, new TemperatureStats(avg, min, max));
+    private static class DiaClima {
+        private double soma = 0;
+        private int count = 0;
+        private double min = Double.MAX_VALUE;
+        private double max = Double.MIN_VALUE;
+
+        public void adicionar(double temperatura) {
+            soma += temperatura;
+            count++;
+            min = Math.min(min, temperatura);
+            max = Math.max(max, temperatura);
         }
-    }
 
-    public Map<String, TemperatureStats> getDailyStats() {
-        return dailyStats;
-    }
+        public double getMedia() {
+            return soma / count;
+        }
 
-    public static class TemperatureStats {
-        public final double avg;
-        public final double min;
-        public final double max;
+        public double getMin() {
+            return min;
+        }
 
-        public TemperatureStats(double avg, double min, double max) {
-            this.avg = avg;
-            this.min = min;
-            this.max = max;
+        public double getMax() {
+            return max;
         }
     }
 }
