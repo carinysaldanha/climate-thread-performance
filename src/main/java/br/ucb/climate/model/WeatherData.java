@@ -1,4 +1,4 @@
-package br.ucb.climate;
+package br.ucb.climate.model;
 
 import java.util.HashMap;
 import java.util.Map;
