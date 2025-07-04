@@ -1,13 +1,79 @@
-# ---- IntelliJ ----
+# =========================
+# IntelliJ IDEA
+# =========================
+# IDE configs (pessoais ou geradas automaticamente)
+.idea/
 .idea/**/workspace.xml
 .idea/**/tasks.xml
-# (etc... todo o conteúdo do IntelliJ que você já colou)
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/aws.xml
+.idea/**/contentModel.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/**/mongoSettings.xml
+.idea/replstate.xml
+.idea/sonarlint/
+.idea/**/sonarIssues.xml
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator-enh.xml
+.idea/**/markdown-navigator/
+.idea/$CACHE_FILE$
+.idea/codestream.xml
+.idea/**/azureSettings.xml
+.idea/httpRequests
+.idea/caches/build_file_checksums.ser
 
-# ---- Java ----
+# IntelliJ modules & project files (com auto-import Maven/Gradle)
+.idea/artifacts
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/modules
+*.iml
+*.ipr
+
+# Output folders
+out/
+cmake-build-*/
+.idea_modules/
+
+# Plugins
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# =========================
+# Java
+# =========================
+# Compiled files
 *.class
+
+# Logs
 *.log
+
+# Temp / Crash logs
+hs_err_pid*
+replay_pid*
+
+# BlueJ
 *.ctxt
+
+# J2ME (Java ME)
 .mtj.tmp/
+
+# Package outputs
 *.jar
 *.war
 *.nar
@@ -15,5 +81,3 @@
 *.zip
 *.tar.gz
 *.rar
-hs_err_pid*
-replay_pid*
