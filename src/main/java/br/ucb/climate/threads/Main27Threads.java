@@ -4,6 +4,7 @@ import br.ucb.climate.Util;
 import br.ucb.climate.controller.WeatherFetcher;
 import br.ucb.climate.model.City;
 import br.ucb.climate.model.WeatherData;
+import br.ucb.climate.view.ConsolePrinter;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -21,8 +22,12 @@ public class Main27Threads {
 
             ExecutorService executor = Executors.newFixedThreadPool(27);
 
-            for (City cidade : cidades) {
-                executor.execute(new Worker(cidade));
+            for (int i = 0; i < 9; i++) {
+                int start = i * 3;
+                int end = Math.min(start + 3, cidades.size());
+                List<City> sublista = cidades.subList(start, end);
+
+                executor.execute(new Main9Threads.Worker(sublista));
             }
 
             executor.shutdown();
@@ -44,16 +49,18 @@ public class Main27Threads {
     }
 
     public static class Worker implements Runnable {
-        private final City cidade;
+        private final List<City> cidades;
 
-        public Worker(City cidade) {
-            this.cidade = cidade;
+        public Worker(List<City> cidades) {
+            this.cidades = cidades;
         }
 
         @Override
         public void run() {
-            WeatherData dados = WeatherFetcher.fetch(cidade);
-            if (dados != null) dados.imprimirResumo();
+            for (City cidade : cidades) {
+                WeatherData dados = WeatherFetcher.fetch(cidade);
+                ConsolePrinter.imprimir(dados);
+            }
         }
     }
 }
