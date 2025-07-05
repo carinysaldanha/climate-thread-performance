@@ -117,7 +117,7 @@ Para cada cidade, são apresentados
 Os resultados completos e a análise comparativa entre as 4 versões estão disponíveis no relatório.
 
 ## 📄 Relatório
-O arquivo [relatorio.pdf]() contém:
+O arquivo [relatorio.pdf](trabalhoabcdefg.pdf) contém:
 
 - Explicação teórica sobre threads, concorrência e paralelismo;
 - Tabela com os tempos médios de execução por versão;
